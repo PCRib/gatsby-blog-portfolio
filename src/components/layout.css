@@ -42,6 +42,7 @@ a {
   -webkit-text-decoration-skip: objects;
   color: #333;
   text-decoration: none;
+  font-family: 'Muli', sans-serif;
 }
 a:active,
 a:hover {
@@ -623,4 +624,7 @@ pre tt:after {
   html {
     font-size: 100%;
   }
+}
+p{
+  margin: 0
 }

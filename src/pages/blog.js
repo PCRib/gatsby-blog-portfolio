@@ -7,18 +7,53 @@ import Layout from '../components/layout'
 const BlogPage = ({data}) => (
   <Layout>
     <h1>Latest Posts</h1>
-    {data.allMarkdownRemark.edges.map(post =>(
-        <div key={post.node.id}>
-            <h3>{post.node.frontmatter.title}</h3>
-            <small>Posted by {post.node.frontmatter.author} on {post.node.frontmatter.date}</small>
-            <br/>
-            <br/>
-            <Link to={post.node.frontmatter.path}>Read More</Link>
-            <br/>
-            <br/>
-            <hr/>
+    <div style={{
+      display: 'flex',
+      justifyContent: 'space-between'
+    }}>
+    {data.allMarkdownRemark.edges.map((post,index) =>(
+      
+        <div style={{
+          boxShadow: "0px 4px 15px -4px rgba(0,0,0,0.75)",
+          // padding: "0px 25px",
+          width: "23%",
+          minHeight:'15em',
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: 'center',
+          borderRadius:'10px'
+        }} key={index}>
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            height:"100%"
+          }}>
+            <h3 style={{
+              fontSize:'1em',
+              textAlign:'center',
+              margin:'0',
+              padding: "0 0 1em 0"
+            }}>{post.node.frontmatter.title}</h3>
+            
+            <div style={{
+              display:'flex',
+              flexDirection:'column',
+              alignItems:'center',
+              justifyContent: "flex-end",
+              // height: "50%"
+            }}>
+              <small>Posted by</small>
+              <small> {post.node.frontmatter.author}</small>
+              <small> on {post.node.frontmatter.date}</small>
+              <Link to={post.node.frontmatter.path}>Read More</Link>
+            </div>
+          </div>
         </div>
+      
     ))}
+    </div>
     <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
       {/* <Image /> */}
     </div>
